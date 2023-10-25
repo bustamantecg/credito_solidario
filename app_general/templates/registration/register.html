@@ -1,0 +1,43 @@
+{% extends "app_general/base.html" %}
+
+{% load static %}
+
+{% block title %} Capresca - CrediSol {% endblock %} 
+    
+{% block subtitulo %} Acceder {% endblock%} 
+
+{% block content %} 
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper">Registro de Usuario</span>
+                        <span class="section-heading-upper">Complete todos los Campos</span>
+                        
+                    </h2>
+                    <ul class="list-unstyled list-hours mb-5 mx-auto">
+
+                        <form action="" method="post">
+                           {%  csrf_token %}
+                           {% load crispy_forms_tags %} 
+                           
+                           {{ form | crispy }} 
+                           <p class="mb-0">                         
+                             <a href="{% url 'index' %}" class="card-link">Inicio</a>
+                             &nbsp; &nbsp; &nbsp;
+                             <a href="{% url 'login' %}" class="card-link">Iniciar Sesión</a>
+                           </p>
+                           <button type="submit">Registrarse</button>
+
+                        </form>                           
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>        
+
+{% endblock%} 
+

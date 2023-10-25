@@ -1,0 +1,63 @@
+{% extends "app_general/base.html" %}
+
+{% load static %}
+
+{% block title %} Capresca - CrediSol {% endblock %} 
+    
+{% block subtitulo %}  {% endblock%} 
+
+{% block content %} 
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded rounded">
+                            <h2 class="section-heading mb-5">
+                                <span class="section-heading-upper">Emprendimientos &nbsp;&nbsp;
+                                  {% if 'Promotores' in groups %}
+                                    <a href="{% url 'emprendimiento_nuevo' %}" class="btn btn-outline-dark">Nuevo</a>
+                                  {% endif %}  
+                                </span>                             
+                            </h2>
+                            <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title"></h5>
+                                  <div class="accordion" id="accordionExample">
+                                    {% for emp in emprendimientos %}
+                                    
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="heading-{{emp.id}}">
+                                       
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{emp.id}}" aria-expanded="false" aria-controls="collapse-{{emp.id}}">
+                                          <p>{{emp.nombre}}     {{emp.inicio|date:"d M Y"}}</p>                                          
+                                        </button>
+
+                                      </h2>
+                                      <div id="collapse-{{emp.id}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{emp.id}}" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body" >
+                                          <strong>Referente </strong> <p> {{emp.referente.apellido}}, {{emp.referente.nombre}}</p>
+                                          <strong>Contacto:</strong> <p> <strong>Tel.</strong> {{emp.telefono}}  <strong>Cel. {{emp.celular}}</strong></p>
+                                          <strong>Domicilio:</strong> <p> {{emp.domicilio}}</p>
+                                          <p align="center"><a href="#" class="btn btn-info">+ Inf.</a> 
+                                            {% if 'Promotores' in groups %}
+                                              <a href="{% url 'emprendimiento_editar' emp.id %}" class="btn btn-outline-dark">Editar</a>
+                                            {% endif %}  
+                                          </p>
+
+                                          
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>           
+  
+    {% endblock%} 

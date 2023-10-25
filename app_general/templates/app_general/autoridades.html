@@ -1,0 +1,30 @@
+{% extends "app_general/base.html" %}
+
+{% load static %}
+
+{% block title %} Capresca - CrediSol {% endblock %} 
+    
+{% block subtitulo %}  {% endblock%} 
+
+{% block content %} 
+
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    {% for aut in autoridades %}
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper"> 
+                            <img  src="{{aut.imagen.url}}" alt="autoridades"  style="width:35%;">
+                            <p class="card-text" >{{aut.cargo}}</p>
+                            <p class="card-text" >{{aut.membresia}} {{aut.apellido}}, {{aut.nombre}}</p>
+                        </span>                                               
+                    </h2>
+                    {% endfor %}                                                                                                                                                                                                                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+{% endblock%} 

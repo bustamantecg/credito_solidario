@@ -1,0 +1,40 @@
+{% extends "app_general/base.html" %}
+
+{% load static %}
+
+{% block title %} Capresca - Editar Empto. {% endblock %} 
+    
+{% block subtitulo %}  {% endblock%} 
+
+{% block content %} 
+
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-left rounded">
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper">Editar Emprendimiento</span>
+                        
+                    </h2>                    
+                    
+                        
+                        <span class="section-heading-upper"> 
+                            <form method="post">
+                                {% csrf_token %}
+                                {% load crispy_forms_tags %}                            
+
+                                {{ formEmprendi_editar | crispy }}                                 
+                                <button type="submit">Actualizar</button>
+                            </form>
+                        </span>                                               
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+{% endblock%} 
+
+

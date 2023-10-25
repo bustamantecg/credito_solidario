@@ -1,0 +1,47 @@
+{% extends "app_general/base.html" %}
+
+{% load static %}
+
+{% block title %} Capresca - CrediSol {% endblock %} 
+    
+{% block subtitulo %} Promotores {% endblock%} 
+
+{% block content %} 
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-5">
+                                <span class="section-heading-upper">Listado</span>
+                                <span class="section-heading-lower">Promotores</span>
+                            </h2>
+                            <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
+
+                                {% for promotor in promotores %}
+                                <li class="list-unstyled-item list-hours-item d-flex">                                    
+                                    {{ promotor.apellido}}, {{promotor.nombre}} - CUIL {{promotor.cuil}}
+                                    <span class="ms-auto">Zona: {{promotor.zona.nombre}}</span>
+                                    <p align="right"><a href="detalle_seguro/{{seguro.id}}" class="btn btn-info">Información</a></p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <p class="address mb-5">
+                                <em>
+                                    <strong>Mota Botello 854</strong>
+                                    <br />
+                                    Capresca, Catamarca
+                                </em>
+                            </p>
+                            <p class="mb-0">
+                                <small><em>Llamanos</em></small>
+                                <br />
+                                (317) 585-8468
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        
+
+    {% endblock%} 
