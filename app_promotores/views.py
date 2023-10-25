@@ -1,9 +1,7 @@
 from django.shortcuts import render
 
-from app_promotores.models import Promotor
-
-
 # Create your views here.
+from app_promotores.models import Promotor
 
 
 def promotores_listado(request):
